@@ -1,0 +1,46 @@
+{
+  "status": "ok",
+  "totalResults": 9670,
+  "articles": [
+    {
+      "source": { "id": null, "name": "Gizmodo.com" },
+      "author": "Luc Olinga",
+      "title": "Bitcoin Is Lost In Washington, and Nobody Is Looking for It",
+      "description": "Congress just passed its biggest crypto law ever, and Bitcoin didn’t even get a mention. Once the face of financial rebellion, it’s now sidelined while stablecoins take the spotlight.",
+      "url": "https://gizmodo.com/bitcoin-is-lost-in-washington-and-nobody-is-looking-for-it-2000631719",
+      "urlToImage": "https://gizmodo.com/app/uploads/2023/04/16e5700ae24064ff50deef40ec83875d.jpg",
+      "publishedAt": "2025-07-19T12:48:58Z",
+      "content": "Bitcoin may be the most famous cryptocurrency on the planet, but in Washington, its suddenly the ghost at the party.\r\nThis week, lawmakers passed the GENIUS Act, the first-ever U.S. law focused entir… [+2242 chars]"
+    },
+    {
+      "source": { "id": null, "name": "Gizmodo.com" },
+      "author": "Luc Olinga",
+      "title": "Trump Turns 401(k)s Into Crypto Machines",
+      "description": "A new executive order could funnel billions from American retirement accounts into Bitcoin and other digital assets, a massive win for the crypto industry and a huge new risk for your savings.",
+      "url": "https://gizmodo.com/trump-turns-401ks-into-crypto-machines-2000640458",
+      "urlToImage": "https://gizmodo.com/app/uploads/2023/03/6e3b524f845f7e44f126728eec19419a.jpg",
+      "publishedAt": "2025-08-07T23:22:10Z",
+      "content": "President Donald Trump, who has rebranded himself as one of the worlds most powerful crypto advocates, has just signed an executive order that could reshape Americans retirement investing. For the fi… [+4162 chars]"
+    },
+    {
+      "source": { "id": "wired", "name": "Wired" },
+      "author": "Joel Khalili",
+      "title": "Donald Trump Orders Crackdown on Politically-Motivated ‘Debanking’",
+      "description": "In a new executive order, the US president has called on federal regulators to investigate and punish banks for alleged discrimination against conservatives, Christians and certain types of business.",
+      "url": "https://www.wired.com/story/donald-trump-orders-crackdown-on-politically-motivated-debanking/",
+      "urlToImage": "https://media.wired.com/photos/689322803e6458c3511b4ce1/191:100/w_1280,c_limit/GettyImages-2227409013.jpg",
+      "publishedAt": "2025-08-08T07:02:49Z",
+      "content": "Carter termed this alleged discrimination campaign Operation Chokepoint 2.0, in reference to an Obama-era antifraud program under which US officials reportedly discouraged banks from dealing with por… [+3748 chars]"
+    },
+    {
+      "source": { "id": "business-insider", "name": "Business Insider" },
+      "author": "cji@businessinsider.com (Christine Ji)",
+      "title": "Scams, forgotten passwords, and lost fortunes: Meet the digital locksmith who helps people get their bitcoin back",
+      "description": "Bitcoin is surging, and so are lost wallets and crypto scams. Behind the scenes with a crypto recovery professional.",
+      "url": "https://www.businessinsider.com/bitcoin-lost-wallet-recovery-forgot-password-crypto-scam-rally-btc-2025-7",
+      "urlToImage": "https://i.insider.com/6883be3385e81483682eb3dc?width=1200&format=jpeg",
+      "publishedAt": "2025-07-26T09:30:01Z",
+      "content": "Forgetting your Instagram password is annoying. Forgetting your crypto wallet password could be devastating. \r\nCrypto owners don't have the luxury of emailing themselves a password reset link if they… [+4459 chars]"
+    }
+  ]
+}
