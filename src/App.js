@@ -103,7 +103,7 @@ const App = () => {
                 apiKey={apiKey}
                 key="technology"
                 pageSize="20"
-                category="technology"
+                category="general"
               />
             }
           />

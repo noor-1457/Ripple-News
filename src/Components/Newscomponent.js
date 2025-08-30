@@ -13,6 +13,20 @@ const Newscomponent = (props) => {
           }
           className="card-img-top"
           alt="..."
+          onError={(e) => {
+            e.target.onerror = null; //if there is error401
+            e.target.src =
+              "https://images.freeimages.com/images/large-previews/9a5/newspapers-1-1315378.jpg?fmt=webp&w=500"; //then apply this img
+            window.addEventListener(
+              "error",
+              (e) => {
+                if (e.target.tagName === "img") {
+                  e.stopImmediatePropagation(); // stops the error from hitting console
+                }
+              },
+              true
+            );
+          }}
         />
         <div className="card-body">
           <h5 className="card-title">{title}...</h5>

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component"; // Library for infinite scrolling
 
 const News = (props) => {
-  const [articles, setArticles] = useState([]);
+  const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -15,18 +15,36 @@ const News = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  // ✅ Helper function to remove duplicates by URL
+  const removeDuplicates = (news) => {
+    const seen = new Set();
+    return news.filter((news) => {
+      if (seen.has(news.url)) {
+        return false;
+      }
+      seen.add(news.url);
+      return true;
+    });
+  };
+
   // Function to fetch data for the first time
   const update = async () => {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://api.worldnewsapi.com/search-news?api-key=28346d4af8ee4b9a8da7473e060c74e0&text=${
+      props.category
+    }&source-country=PK&number=${props.pageSize}&offset=${
+      page * props.pageSize
+    }`;
     setLoading(true); // Show spinner
     let data = await fetch(url); // Fetch data from API
     props.setProgress(30);
     let parsedData = await data.json(); // Convert response to JSON
     props.setProgress(70);
+    // ✅ remove duplicates
+    setNews(removeDuplicates(parsedData.news));
     console.log(parsedData);
-    setArticles(parsedData.articles);
-    setTotalResults(parsedData.totalResults);
+    setNews(parsedData.news);
+    setTotalResults(parsedData.available);
     setLoading(false);
     props.setProgress(100);
     console.log("pehle load ho gaya"); // Debug log
@@ -39,22 +57,23 @@ const News = (props) => {
 
   const fetchMoreData = async () => {
     // API call with updated page
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${
+    const url = `https://api.worldnewsapi.com/search-news?api-key=28346d4af8ee4b9a8da7473e060c74e0&text=${
       props.category
-    }&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
+    }&source-country=PK&number=${props.pageSize}&offset=${
+      page * props.pageSize
+    }`;
+
     setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
-    // Append new articles
-    setArticles(articles.concat(parsedData.articles));
-    // Update total results if needed
-    setTotalResults(parsedData.totalResults);
+
+    // ✅ append new + remove duplicates
+    setNews((prevNews) => removeDuplicates([...prevNews, ...parsedData.news]));
+
+    setTotalResults(parsedData.available);
     setLoading(false);
     console.log("dusra load ho gaya"); // Debug log
-    if (!articles || articles.length === 0) {
-      console.log("end");
-    }
   };
 
   return (
@@ -74,25 +93,25 @@ const News = (props) => {
 
         {/* Infinite Scroll wrapper */}
         <InfiniteScroll
-          dataLength={articles.length} // Current number of articles
+          dataLength={news.length} // Current number of news
           next={fetchMoreData} // Function to call for more data
-          hasMore={articles.length < articles.length == 0} // Stop when all articles loaded
-          loader={articles.length < articles.length === 0 && <Spinner />} // Show spinner while fetching new data
+          hasMore={news.length < news.length == 0} // Stop when all news loaded
+          loader={news.length < news.length === 0 && <Spinner />} // Show spinner while fetching new data
         >
           <div className="container">
             <div className="row">
               {/* Render news cards only when not loading */}
               {!loading &&
-                articles.map((element) => {
+                news.map((element) => {
                   return (
                     <div className="col-md-4" key={element.url}>
                       <Newscomponent
                         title={element.title ? element.title : "No Title"} // News title
-                        description={element.description} // News description
-                        imgUrl={element.urlToImage} // Image
+                        description={element.summary.slice(0, 100)} // News summary
+                        imgUrl={element.image} // Image
                         newsUrl={element.url} // News link
                         author={element.author} // News author
-                        date={element.publishedAt} // Publish date
+                        date={element.publish_date} // Publish date
                       />
                     </div>
                   );
