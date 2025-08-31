@@ -2,7 +2,12 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import React, { useState } from "react";
 import News from "./Components/News";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 const App = () => {
@@ -16,6 +21,9 @@ const App = () => {
         <Navbar />
         <LoadingBar color="#f11946" progress={progress} />
         <Routes>
+          {/* Default route → redirect / to /general */}
+          <Route path="/" element={<Navigate to="/general" />} />
+
           <Route
             exact
             path="/general"
@@ -103,7 +111,7 @@ const App = () => {
                 apiKey={apiKey}
                 key="technology"
                 pageSize="20"
-                category="general"
+                category="technology"
               />
             }
           />
@@ -112,4 +120,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
