@@ -30,11 +30,11 @@ const News = (props) => {
   // Function to fetch data for the first time
   const update = async () => {
     props.setProgress(10);
-    const url = `https://api.worldnewsapi.com/search-news?api-key=28346d4af8ee4b9a8da7473e060c74e0&text=${
-      props.category
-    }&source-country=PK&number=${props.pageSize}&offset=${
-      page * props.pageSize
-    }`;
+    const url = `https://api.worldnewsapi.com/search-news?api-key=${
+      props.apiKey
+    }&text=${props.category}&source-country=PK&number=${
+      props.pageSize
+    }&offset=${page * props.pageSize}`;
     setLoading(true); // Show spinner
     let data = await fetch(url); // Fetch data from API
     props.setProgress(30);
@@ -57,11 +57,11 @@ const News = (props) => {
 
   const fetchMoreData = async () => {
     // API call with updated page
-    const url = `https://api.worldnewsapi.com/search-news?api-key=28346d4af8ee4b9a8da7473e060c74e0&text=${
-      props.category
-    }&source-country=PK&number=${props.pageSize}&offset=${
-      page * props.pageSize
-    }`;
+    const url = `https://api.worldnewsapi.com/search-news?api-key=${
+      props.apiKey
+    }&text=${props.category}&source-country=PK&number=${
+      props.pageSize
+    }&offset=${page * props.pageSize}`;
 
     setPage(page + 1);
     let data = await fetch(url);
